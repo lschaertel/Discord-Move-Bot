@@ -38,6 +38,16 @@
             <artifactId>hashids</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.6</version>
+        </dependency>
         <!-- FindBugs Error -->
         <dependency>
             <groupId>org.graalvm.compiler</groupId>
