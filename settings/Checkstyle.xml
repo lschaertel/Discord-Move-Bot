@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <!-- Exclude all resource directories from been check. -->
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="^?/resources/*"/>
+    </module>
+    <module name="SuppressWarningsFilter"/>
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="^?/test/*"/>
+    </module>
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="^?/*Application.java"/>
+    </module>
+    <module name="TreeWalker">
+        <property name="tabWidth" value="4"/>
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="PackageName"/>
+        <module name="ParameterName">
+            <property name="format" value="^_?[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+        <module name="LineLength">
+            <property name="max" value="120"/>
+        </module>
+        <module name="MethodLength"/>
+        <module name="ParameterNumber"/>
+        <module name="EmptyForIteratorPad"/>
+        <module name="GenericWhitespace"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter">
+            <property name="tokens" value="BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS"/>
+        </module>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="SEMI,TYPECAST"/>
+        </module>
+        <module name="WhitespaceAround"/>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+        <module name="AvoidInlineConditionals">
+            <property name="severity" value="ignore"/>
+            <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+        </module>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MagicNumber"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="ModifiedControlVariable"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="DesignForExtension">
+            <property name="severity" value="ignore"/>
+            <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+        </module>
+        <module name="FinalClass"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier"/>
+        <module name="ArrayTypeStyle"/>
+        <module name="FinalParameters"/>
+        <module name="TodoComment">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="UpperEll"/>
+        <module name="AbbreviationAsWordInName">
+            <property name="ignoreFinal" value="false"/>
+            <property name="allowedAbbreviationLength" value="1"/>
+            <property name="allowedAbbreviations" value="AST"/>
+        </module>
+        <module name="AnnotationLocation">
+            <property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
+        </module>
+        <module name="AnnotationUseStyle"/>
+        <module name="AnonInnerLength">
+            <property name="max" value="35"/>
+        </module>
+        <module name="ArrayTrailingComma"/>
+        <module name="AvoidEscapedUnicodeCharacters"/>
+        <module name="BooleanExpressionComplexity">
+            <property name="max" value="7"/>
+        </module>
+        <module name="CatchParameterName">
+            <property name="format" value="^(ex|[a-z][a-z][a-zA-Z]+)$"/>
+        </module>
+        <module name="ClassDataAbstractionCoupling">
+            <!-- Default classes are also listed-->
+            <property name="max" value="12"/>
+            <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short, void, Boolean, Byte, Character, Double, Float, Integer, Long, Short, Void, Object, Class, String, StringBuffer, StringBuilder, ArrayIndexOutOfBoundsException, Exception, RuntimeException, IllegalArgumentException, IllegalStateException, IndexOutOfBoundsException, NullPointerException, Throwable, SecurityException, UnsupportedOperationException, List, ArrayList, Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map, HashMap, SortedMap, TreeMap,
+            DetailsAST, CheckstyleException, UnsupportedEncodingException, BuildException, ConversionException, FileNotFoundException, TestException"/>
+        </module>
+        <module name="ClassFanOutComplexity">
+            <property name="max" value="25"/>
+            <!-- Default classes are also listed-->
+            <property name="excludedClasses"
+                      value="boolean, byte, char, double, float, int, long, short,  void, Boolean, Byte, Character, Double, Float, Integer, Long, Short, Void, Object, Class, String, StringBuffer, StringBuilder, ArrayIndexOutOfBoundsException, Exception, RuntimeException, IllegalArgumentException, IllegalStateException, IndexOutOfBoundsException, NullPointerException, Throwable, SecurityException, UnsupportedOperationException, List, ArrayList, Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map, HashMap, SortedMap, TreeMap, DetailsAST, CheckstyleException, UnsupportedEncodingException, BuildException, ConversionException, FileNotFoundException, TestException, Log, Sets, Multimap, TokenStreamRecognitionException, RecognitionException, TokenStreamException, IOException"/>
+        </module>
+        <module name="ClassTypeParameterName"/>
+        <module name="CommentsIndentation"/>
+        <module name="CovariantEquals"/>
+        <module name="CustomImportOrder">
+            <property name="specialImportsRegExp" value="org"/>
+            <property name="sortImportsInGroupAlphabetically" value="false"/>
+            <property name="separateLineBetweenGroups" value="true"/>
+        </module>
+        <module name="CyclomaticComplexity">
+            <property name="switchBlockAsSingleDecisionPoint" value="true"/>
+            <property name="max" value="30"/>
+        </module>
+        <module name="DefaultComesLast"/>
+        <module name="DescendantToken"/>
+        <module name="DesignForExtension">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="EmptyCatchBlock"/>
+        <module name="EmptyForInitializerPad"/>
+        <module name="EmptyLineSeparator">
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+        </module>
+        <module name="EqualsAvoidNull"/>
+        <module name="ExecutableStatementCount">
+            <property name="max" value="30"/>
+        </module>
+        <module name="ExplicitInitialization"/>
+        <module name="FallThrough"/>
+
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+            <property name="setterCanReturnItsClass" value="true"/>
+        </module>
+        <module name="IllegalCatch">
+            <property name="illegalClassNames"
+                      value="java.lang.Exception, java.lang.Throwable, java.lang.RuntimeException, java.lang.NullPointerException"/>
+        </module>
+        <module name="IllegalThrows"/>
+        <module name="IllegalToken"/>
+        <module name="IllegalTokenText"/>
+        <module name="IllegalType"/>
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <property name="arrayInitIndent" value="8"/>
+        </module>
+        <module name="InnerTypeLast"/>
+        <module name="InterfaceTypeParameterName"/>
+        <module name="JavadocParagraph"/>
+        <module name="JavadocTagContinuationIndentation"/>
+        <module name="JavaNCSS"/>
+        <module name="MethodCount">
+            <property name="maxTotal" value="30"/>
+        </module>
+        <module name="MethodTypeParameterName"/>
+        <module name="MissingDeprecated"/>
+        <module name="MissingOverride"/>
+        <module name="MultipleStringLiterals"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="MutableException"/>
+        <module name="NestedForDepth">
+            <property name="max" value="2"/>
+        </module>
+        <module name="NestedIfDepth">
+            <property name="max" value="2"/>
+        </module>
+        <module name="NestedTryDepth"/>
+        <module name="NoClone"/>
+        <module name="NoFinalizer"/>
+        <module name="NoLineWrap"/>
+        <module name="NonEmptyAtclauseDescription"/>
+        <module name="NPathComplexity"/>
+        <module name="OneStatementPerLine"/>
+        <module name="OneTopLevelClass"/>
+        <module name="OuterTypeFilename"/>
+        <module name="OuterTypeNumber"/>
+        <module name="OverloadMethodsDeclarationOrder"/>
+        <module name="PackageDeclaration"/>
+        <module name="ParameterAssignment"/>
+        <module name="RequireThis"/>
+        <module name="ReturnCount">
+            <property name="max" value="1"/>
+            <property name="maxForVoid" value="0"/>
+        </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="DOT"/>
+            <property name="option" value="nl"/>
+        </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="COMMA"/>
+            <property name="option" value="EOL"/>
+        </module>
+        <module name="SingleLineJavadoc"/>
+        <module name="SingleSpaceSeparator">
+            <property name="validateComments" value="false"/>
+        </module>
+        <module name="StringLiteralEquality"/>
+        <module name="SummaryJavadoc"/>
+        <module name="SuperClone"/>
+        <module name="SuperFinalize"/>
+        <module name="SuppressWarnings"/>
+        <module name="SuppressWarningsHolder"/>
+        <module name="ThrowsCount">
+            <property name="max" value="2"/>
+        </module>
+        <module name="TrailingComment"/>
+        <module name="UnnecessaryParentheses"/>
+        <module name="VariableDeclarationUsageDistance"/>
+
+    </module>
+
+    <module name="UniqueProperties"/>
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
+    <module name="NewlineAtEndOfFile">
+        <property name="lineSeparator" value="lf"/>
+    </module>
+    <module name="Translation"/>
+    <module name="FileLength">
+        <property name="max" value="1500"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="[^*]\s+$"/>
+        <property name="message" value="Line has trailing spaces."/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.out\.print"/>
+        <property name="message" value="System.out.print* is not allowed. Use logging instead."/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.exit"/>
+        <property name="message" value="System.exit is not allowed."/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="printStacktrace"/>
+        <property name="message" value="printStacktrace is not allowed. Use logging instead."/>
+    </module>
+</module>

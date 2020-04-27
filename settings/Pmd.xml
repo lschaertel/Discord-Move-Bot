@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="PMD ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <description>
+    </description>
+    <exclude-pattern>.*/generated-sources/.*</exclude-pattern>
+    <rule ref="rulesets/java/basic.xml"/>
+    <rule ref="rulesets/java/braces.xml"/>
+    <rule ref="rulesets/java/clone.xml"/>
+    <rule ref="rulesets/java/codesize.xml">
+        <!-- we are using CyclomaticComplexity -->
+        <exclude name="ModifiedCyclomaticComplexity"/>
+        <!-- we are using CyclomaticComplexity -->
+        <exclude name="StdCyclomaticComplexity"/>
+        <!-- we won't use this one -->
+        <exclude name="TooManyMethods"/>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/ExcessiveMethodLength">
+       <properties>
+            <property name="violationSuppressXPath" value=".*Test.java"/>
+            <property name="violationSuppressXPath" value=".*Application.java"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="reportLevel" value="11"/>
+            <property name="violationSuppressXPath" value="//DeclarationOrder[@Name='visitToken'] and //MethodDeclaration[@Name='validateCli' and ../../..[@Image='Main']] | //MethodDeclaration[@Name='processSingleGeneric' and ../../..[@Image='GenericWhitespaceCheck']] | //MethodDeclaration[@Name='getJavadocTags' and ../../..[@Image='JavadocUtils']] | //MethodDeclaration[@Name='getDetails' and ../../..[@Image='RightCurlyCheck']] | //ClassOrInterfaceDeclaration[@Image='JavadocMethodCheck' or @Image='JavadocStyleCheck' or @Image='VariableDeclarationUsageDistanceCheck' or @Image='CustomImportOrderCheck']"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/ExcessiveClassLength">
+        <properties>
+            <property name="minimum" value="600"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/comments.xml">
+        <exclude name="CommentSize"/>
+    </rule>
+    <rule ref="rulesets/java/comments.xml/CommentRequired">
+        <properties>
+            <property name="violationSuppressXPath" value=".*Test.java"/>
+            <property name="violationSuppressXPath" value=".*Application.java"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/comments.xml/CommentSize">
+        <properties>
+            <!-- we use class comments as source for xdoc files, so content might be big and that is by design -->
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration | //PackageDeclaration | //ClassOrInterfaceDeclaration[@Image='JavadocTagInfo'] | //ClassOrInterfaceDeclaration[@Image='SeverityLevel'] | //ClassOrInterfaceDeclaration[@Image='LeftCurlyOption'] | //ClassOrInterfaceDeclaration[@Image='RightCurlyOption'] | //ClassOrInterfaceDeclaration[@Image='ImportOrderOption']"/>
+            <property name="maxLines" value="8"/>
+            <property name="maxLineLength" value="100"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/controversial.xml">
+        <!-- we won't use this rule -->
+        <exclude name="UnnecessaryConstructor"/>
+        <!-- that rule is too buggy, too much false positives -->
+        <exclude name="DataflowAnomalyAnalysis"/>
+        <!-- opposite to UnnecessaryConstructor -->
+        <exclude name="AtLeastOneConstructor"/>
+        <!-- that rule blocks usage of normal hashMap and offers no additional value -->
+        <exclude name="UseConcurrentHashMap"/>
+        <!-- exclude AvoidFinalLocalVariable check, offers no benefit-->
+        <exclude name="AvoidFinalLocalVariable"/>
+	<!-- We use all visibility levels intentionally. -->
+	<exclude name="DefaultPackage"/>
+    </rule>
+    <rule ref="rulesets/java/coupling.xml">
+        <exclude name="LawOfDemeter"/>
+        <exclude name="LoosePackageCoupling" />
+    </rule>
+    <rule ref="rulesets/java/coupling.xml/ExcessiveImports">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+
+    <rule ref="rulesets/java/design.xml">
+        <exclude name="UseVarargs"/>
+        <exclude name="UnnecessaryLocalBeforeReturn"/>
+        <exclude name="NonStaticInitializer"/>
+        <exclude name="AccessorClassGeneration"/>
+        
+    </rule>
+    
+    <rule ref="rulesets/java/design.xml/UseUtilityClass">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+    
+    <rule ref="rulesets/java/design.xml/ImmutableField">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Configuration.java"/>
+    		<property name="violationSuppressXPath" value=".*Config.java"/>
+  		</properties>
+    </rule>
+
+    <rule ref="rulesets/java/design.xml/AvoidDeeplyNestedIfStmts">
+        <properties>
+            <!-- default is 3 but we try to use single point of exit from method and that require extra IFs -->
+            <property name="problemDepth" value="2"/>
+        </properties>
+    </rule>
+    
+    <rule ref="rulesets/java/design.xml/AbstractClassWithoutAbstractMethod">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+
+    <rule ref="rulesets/java/empty.xml"/>
+    <rule ref="rulesets/java/finalizers.xml"/>
+    <rule ref="rulesets/java/imports.xml"/>
+    <rule ref="rulesets/java/javabeans.xml">
+          <exclude name="BeanMembersShouldSerialize"/>
+    </rule>
+    <rule ref="rulesets/java/junit.xml">
+         <exclude name="JUnitTestsShouldIncludeAssert"/>
+    </rule>
+    
+    <rule ref="rulesets/java/logging-jakarta-commons.xml">
+		<exclude name="GuardLogStatement"/>
+		<exclude name="GuardDebugLogging"/>
+	</rule>
+	
+    <rule ref="rulesets/java/logging-java.xml"/>
+    <rule ref="rulesets/java/logging-java.xml/SystemPrintln">
+        <properties>
+            <!-- it is ok to use println in CLI class -->
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@Image='Main']"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/logging-java.xml/AvoidPrintStackTrace">
+        <properties>
+            <!-- it is ok to use print stack trace in CLI class -->
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@Image='Main']"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/migrating.xml"/>
+    <rule ref="rulesets/java/migrating.xml/JUnit4TestShouldUseTestAnnotation">
+        <properties>
+            <!-- False positive of PMD. Non-test methods can be named as 'test' -->
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@Image='PackageObjectFactory']"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/migrating.xml/JUnit4TestShouldUseBeforeAnnotation">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+    <rule ref="rulesets/java/migrating.xml/JUnit4TestShouldUseAfterAnnotation">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+
+    <rule ref="rulesets/java/naming.xml/ShortVariable">
+    	<properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+    <rule ref="rulesets/java/naming.xml/LongVariable">
+        <properties>
+            <!-- nothing bad in long and descriptive variable names if only they fit line, but still keep it reasonable -->
+            <property name="minimum" value="45"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/naming.xml/ShortClassName">
+        <properties>
+            <!-- Main is good name for class containing main method, Tag as inner class name is also fine -->
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@Image='Main' or @Image='Tag']"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/optimizations.xml">
+        <!--not configurable, decreases readability-->
+        <exclude name="UseStringBufferForStringAppends"/>
+        <exclude name="LocalVariableCouldBeFinal"/>
+        
+    </rule>
+    
+    <rule ref="rulesets/java/optimizations.xml/MethodArgumentCouldBeFinal">
+        <properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>    
+    </rule>
+
+    <rule ref="rulesets/java/strings.xml"/>
+    <rule ref="rulesets/java/typeresolution.xml">
+       <exclude name="SignatureDeclareThrowsException"/>
+    </rule>
+    <rule ref="rulesets/java/unnecessary.xml"/>
+    <rule ref="rulesets/java/unusedcode.xml/UnusedLocalVariable">
+    	<properties>
+    		<property name="violationSuppressXPath" value=".*Test.java"/>
+    		<property name="violationSuppressXPath" value=".*Application.java"/>
+  		</properties>
+    </rule>
+</ruleset>

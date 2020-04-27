@@ -1,0 +1,11 @@
+service:
+  environment: dev
+  discord-api-token: [DISCORD API TOKEN]
+
+logging:
+  level:
+    com: INFO
+    com.discordbot.listener.MessageListener: DEBUG
+
+server:
+  port: 8001

@@ -1,0 +1,32 @@
+{
+  "properties": [
+    {
+      "name": "service.environment",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "service.export-path-plaintext",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "kafka.producer.bootstrap-servers",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "kafka.producer.topics",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "kafka.consumer.bootstrap-servers",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "kafka.consumer.topics",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "discord-api-token",
+      "type": "java.lang.String"
+    },
+  ]
+}
